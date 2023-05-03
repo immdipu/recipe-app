@@ -1,4 +1,5 @@
 import React from "react";
+import RecipeList from "@/components/RecipeList";
 
 const getRecipe = async (type) => {
   const res = await fetch(
@@ -10,8 +11,8 @@ const getRecipe = async (type) => {
 
 const page = async ({ params }) => {
   const recipes = await getRecipe(params.type);
-  console.log(recipes);
-  return <div></div>;
+
+  return <RecipeList recipes={recipes.meals} type={params.type || ""} />;
 };
 
 export default page;
